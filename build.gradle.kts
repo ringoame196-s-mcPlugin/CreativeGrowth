@@ -3,8 +3,8 @@ import dev.s7a.gradle.minecraft.server.tasks.LaunchMinecraftServerTask
 import dev.s7a.gradle.minecraft.server.tasks.LaunchMinecraftServerTask.JarUrl
 import groovy.lang.Closure
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
-import java.net.HttpURLConnection
 import java.net.ConnectException
+import java.net.HttpURLConnection
 import java.net.URL
 
 plugins {
@@ -36,29 +36,18 @@ dependencies {
 }
 
 configure<BukkitPluginDescription> {
-    main = "@group@.Main"
+    main = "com.github.ringoame196_s_mcPlugin.Main"
     version = pluginVersion
     apiVersion = "1." + pluginVersion.split(".")[1]
-    author = "@author@"
-    /*
-    コマンド追加用
-    commands {
-        register("test") {
-            description = "This is a test command!"
-            aliases = listOf("t")
-            permission = "testplugin.test"
-            usage = "Just run the command!"
-        }
-    }
-    */
+    author = "ringoame196_s_mcPlugin"
 }
 
 tasks.withType<ShadowJar> {
     configurations = listOf(shadowImplementation)
     archiveClassifier.set("")
-    relocate("kotlin", "@group@.libs.kotlin")
-    relocate("org.intellij.lang.annotations", "@group@.libs.org.intellij.lang.annotations")
-    relocate("org.jetbrains.annotations", "@group@.libs.org.jetbrains.annotations")
+    relocate("kotlin", "com.github.ringoame196_s_mcPlugin.libs.kotlin")
+    relocate("org.intellij.lang.annotations", "com.github.ringoame196_s_mcPlugin.libs.org.intellij.lang.annotations")
+    relocate("org.jetbrains.annotations", "com.github.ringoame196_s_mcPlugin.libs.org.jetbrains.annotations")
 }
 
 tasks.named("build") {
@@ -91,7 +80,7 @@ tasks.named("build") {
                 } else {
                     println("Failed to get response: ${connection.responseCode}")
                 }
-            } catch (e:ConnectException) {
+            } catch (e: ConnectException) {
                 println("Could not connect to reload destination server: ${e.message}")
             } catch (e: Exception) {
                 e.printStackTrace()
