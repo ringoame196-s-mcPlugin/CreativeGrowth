@@ -2,6 +2,10 @@
 
 ## プラグイン説明
 
+https://github.com/user-attachments/assets/b24d1bdb-9aa3-4360-a098-9455c4371592
+
+
+
 クリエイティブでの木の設置が楽になる
 
 ## 使い方
